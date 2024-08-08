@@ -1,5 +1,10 @@
 import React from "react";
+import LoginForm from "../features/authentication/LoginForm";
 
 export default function Login() {
-  return <div className="mb-1">Login</div>;
+  return (
+    <div className="min-h-screen  content-center my-1 ">
+      <LoginForm />
+    </div>
+  );
 }
