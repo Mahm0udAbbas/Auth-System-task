@@ -1,14 +1,30 @@
 import { TextField, Button, Container, Grid, Paper } from "@mui/material";
 import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
-
+import { loginUser } from "../../services/apiAuth";
+import Cookies from "js-cookie";
+import toast from "react-hot-toast";
 export default function LoginForm() {
   const { register, formState, handleSubmit, getValues, reset, setError } =
     useForm();
   const { errors } = formState;
   const navigate = useNavigate();
 
-  async function onSubmit(data) {}
+  async function onSubmit(data) {
+    try {
+      const res = await loginUser(data);
+      console.log(res);
+      if (res.status === true) {
+        toast.success(res.message.en);
+      }
+      Cookies.set("authToken", res.data.accessToken, {
+        expires: res.data.accessTokenExpiresIn,
+      });
+      navigate("/");
+    } catch (err) {
+      console.log(err.message);
+    }
+  }
   return (
     <Container maxWidth="sm">
       <Paper elevation={3} className="p-3">
@@ -61,7 +77,7 @@ export default function LoginForm() {
               <Button
                 onClick={(e) => {
                   e.preventDefault();
-                  navigate("/siginup");
+                  navigate("/signup");
                 }}
                 variant="outlined"
                 fullWidth={true}

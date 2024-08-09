@@ -26,9 +26,11 @@ export async function registerUser(userData, setError) {
 export async function loginUser(credentials) {
   try {
     const res = await axiosInstance.post("/auth/login", credentials);
+    console.log(res);
+
     return res.data;
   } catch (e) {
-    console.error("Error logging in user:", e);
+    toast.error(e.response.data.message.en);
     throw e;
   }
 }
