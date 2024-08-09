@@ -4,22 +4,24 @@ import { useNavigate } from "react-router-dom";
 import { loginUser } from "../../services/apiAuth";
 import Cookies from "js-cookie";
 import toast from "react-hot-toast";
+import useUser from "../profile/useUser";
 export default function LoginForm() {
   const { register, formState, handleSubmit, getValues, reset, setError } =
     useForm();
   const { errors } = formState;
   const navigate = useNavigate();
+  const { saveUser } = useUser();
 
   async function onSubmit(data) {
     try {
       const res = await loginUser(data);
-      console.log(res);
       if (res.status === true) {
         toast.success(res.message.en);
       }
       Cookies.set("authToken", res.data.accessToken, {
         expires: res.data.accessTokenExpiresIn,
       });
+      saveUser(res.data.user);
       navigate("/");
     } catch (err) {
       console.log(err.message);

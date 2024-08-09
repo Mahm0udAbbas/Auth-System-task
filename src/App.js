@@ -6,11 +6,16 @@ import Registration from "./pages/Registration";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import AppLayout from "./ui/AppLayout";
 import { Toaster } from "react-hot-toast";
+import ProtectedRoute from "./ui/ProtectedRoute";
 
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <AppLayout />,
+    element: (
+      <ProtectedRoute>
+        <AppLayout />
+      </ProtectedRoute>
+    ),
     children: [
       {
         index: true,
