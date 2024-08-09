@@ -7,7 +7,7 @@ export default function UserAvater() {
         className="block w-16 object-cover object-center rounded-full outline-2 outline-gray-100 outline "
         src="https://placehold.co/400"
       />
-      <spn className="">Name</spn>
+      <span className="">Name</span>
     </div>
   );
 }
