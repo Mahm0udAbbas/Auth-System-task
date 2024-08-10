@@ -3,7 +3,7 @@ import { TextField, Button, Container, Grid, Paper, Link } from "@mui/material";
 import { useForm } from "react-hook-form";
 import { registerUser } from "../../services/apiAuth";
 import toast from "react-hot-toast";
-import { useNavigate } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 
 export default function RegistrationForm() {
   const { register, formState, handleSubmit, getValues, reset, setError } =
@@ -17,13 +17,11 @@ export default function RegistrationForm() {
       if (res.status === true) {
         toast.success(res?.message.en);
         navigate("/login");
+        reset();
       } else {
         toast.error(res?.message.en);
       }
-    } catch (err) {
-    } finally {
-      reset();
-    }
+    } catch (err) {}
   }
   return (
     <Container maxWidth="sm">
@@ -180,7 +178,9 @@ export default function RegistrationForm() {
             </Grid>
             <Grid className="text-center" item xs={12}>
               <span>already have email </span>
-              <Link>login</Link>
+              <Link>
+                <NavLink to={"/login"}>login</NavLink>
+              </Link>
             </Grid>
           </Grid>
         </form>

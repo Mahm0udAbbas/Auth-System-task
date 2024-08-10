@@ -1,14 +1,7 @@
-import React, { useEffect, useState } from "react";
+import useUser from "../../hooks/useUser";
 
 export default function UserAvater() {
-  const [user, setUser] = useState("");
-  useEffect(
-    function () {
-      const storedUser = localStorage.getItem("user");
-      setUser(JSON.parse(storedUser));
-    },
-    [setUser]
-  );
+  const { user } = useUser();
 
   return (
     <div className="text-gray-50 flex gap-5 items-center text-2xl font-meduim">

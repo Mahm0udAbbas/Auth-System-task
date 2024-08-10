@@ -4,10 +4,9 @@ import { useNavigate } from "react-router-dom";
 import { loginUser } from "../../services/apiAuth";
 import Cookies from "js-cookie";
 import toast from "react-hot-toast";
-import useUser from "../profile/useUser";
+import useUser from "../../hooks/useUser";
 export default function LoginForm() {
-  const { register, formState, handleSubmit, getValues, reset, setError } =
-    useForm();
+  const { register, formState, handleSubmit } = useForm();
   const { errors } = formState;
   const navigate = useNavigate();
   const { saveUser } = useUser();

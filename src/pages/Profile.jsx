@@ -7,14 +7,14 @@ import {
   Grid,
   Typography,
 } from "@mui/material";
-import useUser from "../features/profile/useUser";
+import useUser from "../hooks/useUser";
 import EmailIcon from "@mui/icons-material/Email";
 import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 import PhoneIcon from "@mui/icons-material/Phone";
 export default function Profile() {
   const { user } = useUser();
   return (
-    <div className="px-6 py-4">
+    <div className="sm:px-6 sm:py-4">
       <Container maxWidth="sm">
         <Box mt={5}>
           <Card className="shadow-lg rounded-lg overflow-hidden">

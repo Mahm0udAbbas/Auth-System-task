@@ -34,3 +34,20 @@ export async function loginUser(credentials) {
     throw e;
   }
 }
+
+export async function logoutUser(token) {
+  try {
+    const res = await axiosInstance.post(
+      "/auth/logout",
+      {},
+      {
+        headers: {
+          authorization: `Bearer ${token}`,
+        },
+      }
+    );
+    return res;
+  } catch (error) {
+    throw error;
+  }
+}
