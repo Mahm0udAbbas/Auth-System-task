@@ -24,7 +24,6 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
   - [Material-UI](#material-ui)
 - [Usage](#usage)
 - [Contributing](#contributing)
-- [License](#license)
 - [Create React App Information](#create-react-app-information)
   - [Available Scripts](#available-scripts)
   - [Learn More](#learn-more)
